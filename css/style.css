@@ -59,10 +59,30 @@ body {
   font-size: 12px;
   line-height: 16px;
   color: var(--white);
+  position: relative;
 }
 
 .header__navigation a:hover {
   color: var(--orange);
+}
+
+.header__navigation a::after,
+.header__navigation a:after {
+  content: '';
+  height: 4px;
+  width: 0;
+  border-radius: 20px;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background-color: var(--orange);
+  transition-duration: 0.5s;
+  transition-property: width;
+}
+
+.header__navigation a:hover::after,
+.header__navigation a:active::after {
+  width: 100%;
 }
 
 .header__info a {
@@ -86,11 +106,14 @@ body {
   border: 1px solid var(--orange);
   border-radius: 25px;
   cursor: pointer;
+  transition-property: color, backround-color, transform;
+  transition-duration: 500ms, 500ms, 1s;
 }
 
 .button:hover {
   color: var(--white);
   background-color: var(--orange);
+  transform: scale(1.5);
 }
 
 .button:focus {
@@ -440,7 +463,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  transform: translateY(100%);
+  transform: translateY(105%);
   background-color: rgba(49, 39, 245, 0.7);
   color: var(--white);
   transition-duration: 500ms;
@@ -480,13 +503,21 @@ body {
   margin-top: 30px;
 }
 
-.barbers__social li {
+.barbers__social a {
   background-color: var(--white);
   padding: 12px;
   border-radius: 100px;
+  display: block;
 }
 
-.barbers__social li:hover .icon {
+.barbers__social a:hover {
+  background-color: var(--light-black);
+  padding: 12px;
+  border-radius: 100px;
+  display: block;
+}
+
+.barbers__social a:hover .icon {
   fill: var(--orange);
 }
 
@@ -630,4 +661,42 @@ body {
 .icon {
   width: 20px;
   height: 20px;
+}
+
+/* Style pentru modal */
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+[data-modal] {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.is-hidden [data-modal-content] {
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
+[data-modal-content] {
+  width: 528px;
+  height: 581px;
+  background-color: var(--white);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition-duration: 1s;
+  padding: 20px;
+}
+
+[data-modal-close] {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }

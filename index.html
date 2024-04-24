@@ -76,7 +76,9 @@
               wavelength with clients. Therefore, we are always ready to improve
               everyone who comes to us!
             </p>
-            <button class="about__button button">Book a service</button>
+            <button data-modal-open class="about__button button">
+              Book a service
+            </button>
           </div>
         </div>
       </section>
@@ -411,5 +413,17 @@
         </ul>
       </div>
     </footer>
+
+    <div data-modal class="is-hidden">
+      <div data-modal-content>
+        <h2>Asta e un titlu din modal</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, fuga?
+        </p>
+        <button data-modal-close type="button">X</button>
+      </div>
+    </div>
+
+    <script src="./modal.js"></script>
   </body>
 </html>
